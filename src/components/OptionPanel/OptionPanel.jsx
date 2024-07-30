@@ -33,7 +33,7 @@ function OptionPanel() {
   }, [panelWidth]);
 
   return (
-    <div className="col-start-1">
+    <div className="col-start-1 pt-2">
       <div
         style={{ width: `${panelWidth.size}` }}
         className="flex flex-col items-center p-2 gap-1 h-full"

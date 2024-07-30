@@ -2,10 +2,12 @@ import { useContext } from "react";
 import { ODContext } from "../../context/ODContext";
 
 function AddFalta({ icon, btnSize }) {
-  const { largeSize, setLargeSize } = useContext(ODContext);
+  const { largeSize, setLargeSize, currentOption, setCurrentOption } =
+    useContext(ODContext);
 
   const btnHandler = () => {
     setLargeSize(true);
+    setCurrentOption(0);
   };
   return (
     <>

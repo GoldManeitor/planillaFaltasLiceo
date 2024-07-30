@@ -3,22 +3,31 @@ import { useContext } from "react";
 import { ODContext } from "../../context/ODContext";
 
 function DeployPanel() {
-  const { largeSize, setLargeSize, currentOption, setCurrentOption } =
-    useContext(ODContext);
+  const {
+    largeSize,
+    setLargeSize,
+    currentOption,
+    setCurrentOption,
+    leftLarge,
+  } = useContext(ODContext);
   const btnHandler = () => {
     setLargeSize(false);
-    setCurrentOption(0);
+    // setCurrentOption(0);
   };
   return (
     <div
-      className={`z-10 ${largeSize ? "" : ""}`}
+      className={`p-2 px-8 ${
+        largeSize && !leftLarge
+          ? "shadow-[-10px_0px_15px_-6px_rgb(0,0,0,0.5)] w-full py-6"
+          : "pt-4"
+      }`}
     >
-      <div className="w-full p-2 flex gap-2">
-        {largeSize ? (
+      <div className="w-full">
+        {largeSize && !leftLarge ? (
           <>
             <button
               onClick={btnHandler}
-              className="rotate-90 mr-4 hover:text-[#6200EE] dark:hover:text-[#BB86FC]"
+              className="rotate-90 mr-4 hover:text-[#6200EE] dark:hover:text-[#BB86FC] mb-6"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -37,6 +46,9 @@ function DeployPanel() {
             </button>
           </>
         ) : null}
+      </div>
+      {/* FILTROS GENERALES */}
+      <div className="w-full flex gap-2">
         <button className="bg-[#FFFFFF] dark:bg-[#1D1D1D] border dark:border-none rounded-md px-6 shadow-md">
           fecha
         </button>
@@ -44,6 +56,7 @@ function DeployPanel() {
           grupo
         </button>
       </div>
+      {/* OPCIONES DESPLEGADAS */}
       Opcion: {currentOption}
     </div>
   );

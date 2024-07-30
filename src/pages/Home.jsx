@@ -18,10 +18,11 @@ function Home(props) {
     func();
   }, [navigate]);
   return (
-    <div className="w-full h-full bg-[#E5E5E5] dark:bg-[#111111] dark:text-gray-400 px-6 pt-6">
+    <div className="w-full h-full bg-[#E5E5E5] dark:bg-[#111111] dark:text-gray-400 ">
+      <header className="w-full h-[25px] bg-[#6200EE] dark:bg-[#BB86FC] z-50"></header>
       {/*----------------Paneles-----------------------*/}
-      <ODContextProvider>
-        <div className="w-full h-full grid grid-cols-[auto_1fr] grid-rows-1 gap-4 relative">
+      <ODContextProvider className="z-10">
+        <div className="w-full h-full grid grid-cols-[auto_1fr] grid-rows-1 gap-4 relative px-6">
           <OptionPanel />
           <div className="col-start-2 flex">
             <TablesPanel />

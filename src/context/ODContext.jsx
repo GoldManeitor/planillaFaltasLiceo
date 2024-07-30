@@ -8,6 +8,8 @@ export const ODContext = React.createContext();
 export default function ODContextProvider({ children }) {
   const [largeSize, setLargeSize] = useState(false);
   const [currentOption, setCurrentOption] = useState(0);
+  const [leftLarge, setLeftLarge] = useState(false);
+  const [leftOption, setLeftOption] = useState();
 
   return (
     <ODContext.Provider
@@ -16,6 +18,10 @@ export default function ODContextProvider({ children }) {
         setLargeSize,
         currentOption,
         setCurrentOption,
+        leftLarge,
+        setLeftLarge,
+        leftOption,
+        setLeftOption,
       }}
     >
       {children}
