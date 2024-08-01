@@ -2,12 +2,13 @@ import { useContext } from "react";
 import { ODContext } from "../../context/ODContext";
 
 function DashBtns({ btnSize, icon }) {
-  const { leftLarge, setLeftLarge, leftOption, setLeftOption } =
+  const { leftLarge, setLeftLarge, leftOption, setLeftOption, setLargeSize } =
     useContext(ODContext);
 
   const handleBtns = (btn) => {
     setLeftOption(btn);
     setLeftLarge(true);
+    setLargeSize(false);
   };
   return (
     <>

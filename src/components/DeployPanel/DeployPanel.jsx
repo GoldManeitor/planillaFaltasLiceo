@@ -16,10 +16,8 @@ function DeployPanel() {
   };
   return (
     <div
-      className={`p-2 px-8 ${
-        largeSize && !leftLarge
-          ? "shadow-[-10px_0px_15px_-6px_rgb(0,0,0,0.5)] w-full py-6"
-          : "pt-4"
+      className={`p-2 px-8 border-l dark:border-[#161616] ${
+        largeSize && !leftLarge ? "delay-100 w-full py-8 border-none" : "pt-8"
       }`}
     >
       <div className="w-full">
@@ -49,10 +47,10 @@ function DeployPanel() {
       </div>
       {/* FILTROS GENERALES */}
       <div className="w-full flex gap-2">
-        <button className="bg-[#FFFFFF] dark:bg-[#1D1D1D] border dark:border-none rounded-md px-6 shadow-md">
+        <button className="bg-[#FFFFFF] dark:bg-[#1D1D1D] border border-gray-300 dark:border-none rounded-md px-6 shadow-md">
           fecha
         </button>
-        <button className="bg-[#FFFFFF] dark:bg-[#1D1D1D] border dark:border-none rounded-md px-6 shadow-md">
+        <button className="bg-[#FFFFFF] dark:bg-[#1D1D1D] border border-gray-300 dark:border-none rounded-md px-6 shadow-md">
           grupo
         </button>
       </div>

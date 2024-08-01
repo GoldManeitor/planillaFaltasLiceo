@@ -1,12 +1,11 @@
 //Contenedor de elementos seleccionables en panel de la izquierda
 
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import HBtnContextProvider from "../../context/HomeButtonsContext";
 import { supabase } from "../../supabase/client";
 import DashBtns from "./DashBtns";
 import FilledBtns from "./FilledBtns";
 import AddFalta from "./AddFalta";
-import { ODContext } from "../../context/ODContext";
 
 function OptionPanel() {
   const [darkMode, setDarkMode] = useState(false);
@@ -33,7 +32,7 @@ function OptionPanel() {
   }, [panelWidth]);
 
   return (
-    <div className="col-start-1 pt-2">
+    <div className="col-start-1 pt-6 pr-4 border-r dark:border-[#161616]">
       <div
         style={{ width: `${panelWidth.size}` }}
         className="flex flex-col items-center p-2 gap-1 h-full"
@@ -69,7 +68,7 @@ function OptionPanel() {
           <div className="h-auto flex flex-col gap-2 justify-center items-center">
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className="shadow-lg bg-[#FFFFFF] dark:bg-[#1D1D1D] dark:text-[#D7D7D7] hover:bg-[#D7D7D7] dark:hover:bg-[#2D2D2D] w-[30px] h-[30px] rounded-full flex justify-center items-center"
+              className="shadow-lg bg-[#FFFFFF] dark:bg-[#1D1D1D] dark:text-[#D7D7D7] hover:bg-[#D7D7D7] dark:hover:bg-[#2D2D2D] w-[30px] h-[30px] rounded-full flex justify-center items-center border border-gray-300 dark:border-none"
             >
               {darkMode ? (
                 <>
@@ -113,7 +112,7 @@ function OptionPanel() {
                   ? setPanelWidth({ size: "100px", isOpen: false })
                   : setPanelWidth({ size: "200px", isOpen: true })
               }
-              className={`shadow-lg bg-[#FFFFFF] dark:bg-[#1D1D1D] dark:text-[#D7D7D7] hover:bg-[#D7D7D7] dark:hover:bg-[#2D2D2D] w-[30px] h-[30px] rounded-full flex justify-center items-center ${
+              className={`shadow-lg bg-[#FFFFFF] dark:bg-[#1D1D1D] dark:text-[#D7D7D7] hover:bg-[#D7D7D7] dark:hover:bg-[#2D2D2D] w-[30px] h-[30px] rounded-full flex justify-center items-center border border-gray-300 dark:border-none ${
                 panelWidth.isOpen ? "rotate-[-90deg]" : "rotate-90"
               }`}
             >
