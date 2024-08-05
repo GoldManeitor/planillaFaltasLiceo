@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import { ODContext } from "../../context/ODContext";
 import DashedSection from "./DashedSection";
+import Tables from "./tables components/Tables";
 
 function TablesPanel() {
   const {
@@ -32,7 +33,9 @@ function TablesPanel() {
           className="w-5/6 h-[40px] bg-[#FFFFFF] dark:bg-[#1D1D1D] border border-gray-300 dark:border-none rounded-md"
         />
       </div>
-      <div className="rounded-t-md bg-[#F2F2F2] dark:bg-[#0B0B0B] mt-2 overflow-y-scroll col-start-2 border border-gray-200 dark:border-[#161616]"></div>
+      <div className="rounded-t-md bg-[#F2F2F2] dark:bg-[#0B0B0B] mt-2 overflow-y-scroll col-start-2 border border-gray-200 dark:border-[#161616] flex flex-wrap overflow-y-scroll overflow-x-hidden items-start justify-start content-start">
+        <Tables />
+      </div>
     </div>
   );
 }

@@ -17,7 +17,7 @@ function DashedSection(props) {
     <section
       className={`col-start-1 row-start-1 row-span-3 overflow-y-auto bg-[#F2F2F2] dark:bg-[#0B0B0B] ${
         !leftLarge
-          ? "w-0 *:hidden border-none"
+          ? "w-0 *:hidden border-none mr-2"
           : "w-[300px] rounded-lg p-4 border border-gray-400 border-dashed mr-6 mb-12"
       }`}
     >
@@ -41,13 +41,15 @@ function DashedSection(props) {
           />
         </svg>
       </button>
-      {leftOption === 1 ? (
-        <AddGrupo />
-      ) : leftOption === 2 ? (
-        <AddSubGroup />
-      ) : (
-        <AddAlumno />
-      )}
+      {leftLarge ? (
+        leftOption === 1 ? (
+          <AddGrupo />
+        ) : leftOption === 2 ? (
+          <AddSubGroup />
+        ) : (
+          <AddAlumno />
+        )
+      ) : null}
     </section>
   );
 }

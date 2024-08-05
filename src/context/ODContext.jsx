@@ -11,6 +11,8 @@ export default function ODContextProvider({ children }) {
   const [leftLarge, setLeftLarge] = useState(false);
   const [leftOption, setLeftOption] = useState();
 
+  const [actualizar, setActualizar] = useState(true);
+
   return (
     <ODContext.Provider
       value={{
@@ -22,6 +24,8 @@ export default function ODContextProvider({ children }) {
         setLeftLarge,
         leftOption,
         setLeftOption,
+        actualizar,
+        setActualizar,
       }}
     >
       {children}
