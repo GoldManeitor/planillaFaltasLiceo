@@ -2,7 +2,7 @@ import { ODContext } from "../../../context/ODContext";
 import { supabase } from "../../../supabase/client";
 import { useContext, useEffect, useState } from "react";
 
-function Tables(props) {
+function Tables({ display }) {
   const {
     leftLarge,
     setLeftLarge,
@@ -57,7 +57,13 @@ function Tables(props) {
     <>
       {grupos.length > 0 && subgrupos.length > 0 && alumnos.length > 0
         ? grupos.map((grupo) => (
-            <section className="w-1/2 max-w-[50%] box-border flex-[1_0_50%] h-min p-2">
+            <section
+              style={{
+                maxWidth: !display ? "100%" : "50%",
+                flex: !display ? "1 0 100%" : "1 0 50%",
+              }}
+              className="w-1/2 box-border h-min p-2"
+            >
               <div
                 key={grupo.id}
                 className="w-full p-2 border border-gray-300 dark:border-[#161616] bg-white dark:bg-[#111111] rounded-lg"
