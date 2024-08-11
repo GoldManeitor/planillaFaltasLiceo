@@ -1,6 +1,7 @@
 //Contenedor de elementos desplegables en panel de la derecha.
 import { useContext } from "react";
 import { ODContext } from "../../context/ODContext";
+import AddFaltaComp from "./deploy components/AddFaltaComp";
 
 function DeployPanel() {
   const {
@@ -56,6 +57,7 @@ function DeployPanel() {
       </div>
       {/* OPCIONES DESPLEGADAS */}
       Opcion: {currentOption}
+      <AddFaltaComp />
     </div>
   );
 }

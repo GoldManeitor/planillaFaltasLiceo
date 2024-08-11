@@ -45,7 +45,7 @@ function TablesPanel() {
             } w-8 h-8 border dark:border-[#161616] rounded-l-md cursor-pointer flex justify-center items-center`}
           >
             <svg
-              class="w-6 h-6 text-gray-500 dark:text-gray-500"
+              className="w-6 h-6 text-gray-500 dark:text-gray-500"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -55,9 +55,9 @@ function TablesPanel() {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M9.143 4H4.857A.857.857 0 0 0 4 4.857v4.286c0 .473.384.857.857.857h4.286A.857.857 0 0 0 10 9.143V4.857A.857.857 0 0 0 9.143 4Zm10 0h-4.286a.857.857 0 0 0-.857.857v4.286c0 .473.384.857.857.857h4.286A.857.857 0 0 0 20 9.143V4.857A.857.857 0 0 0 19.143 4Zm-10 10H4.857a.857.857 0 0 0-.857.857v4.286c0 .473.384.857.857.857h4.286a.857.857 0 0 0 .857-.857v-4.286A.857.857 0 0 0 9.143 14Zm10 0h-4.286a.857.857 0 0 0-.857.857v4.286c0 .473.384.857.857.857h4.286a.857.857 0 0 0 .857-.857v-4.286a.857.857 0 0 0-.857-.857Z"
               />
             </svg>
@@ -69,7 +69,7 @@ function TablesPanel() {
             } w-8 h-8 border dark:border-[#161616] rounded-r-md cursor-pointer flex justify-center items-center`}
           >
             <svg
-              class="w-6 h-6 text-gray-500 dark:text-gray-500 rotate-90"
+              className="w-6 h-6 text-gray-500 dark:text-gray-500 rotate-90"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -79,9 +79,9 @@ function TablesPanel() {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M15 5v14M9 5v14M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"
               />
             </svg>

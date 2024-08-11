@@ -58,16 +58,14 @@ function Tables({ display }) {
       {grupos.length > 0 && subgrupos.length > 0 && alumnos.length > 0
         ? grupos.map((grupo) => (
             <section
+              key={grupo.id}
               style={{
                 maxWidth: !display ? "100%" : "50%",
                 flex: !display ? "1 0 100%" : "1 0 50%",
               }}
               className="w-1/2 box-border h-min p-2"
             >
-              <div
-                key={grupo.id}
-                className="w-full p-2 border border-gray-300 dark:border-[#161616] bg-white dark:bg-[#111111] rounded-lg"
-              >
+              <div className="w-full p-2 border border-gray-300 dark:border-[#161616] bg-white dark:bg-[#111111] rounded-lg">
                 <div>
                   <h1 className="text-center uppercase font-bold text-gray-600 dark:text-gray-300">
                     {grupo.name}
