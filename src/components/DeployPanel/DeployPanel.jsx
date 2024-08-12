@@ -17,7 +17,7 @@ function DeployPanel() {
   };
   return (
     <div
-      className={`p-2 px-8 border-l dark:border-[#161616] ${
+      className={`p-2 px-8 border-l dark:border-[#161616] h-full grid grid-rows-[auto_1fr] ${
         largeSize && !leftLarge ? "delay-100 w-full py-8 border-none" : "pt-8"
       }`}
     >
@@ -47,16 +47,16 @@ function DeployPanel() {
         ) : null}
       </div>
       {/* FILTROS GENERALES */}
-      <div className="w-full flex gap-2">
+      {/* <div className="w-full flex gap-2">
         <button className="bg-[#FFFFFF] dark:bg-[#1D1D1D] border border-gray-300 dark:border-none rounded-md px-6 shadow-md">
           fecha
         </button>
         <button className="bg-[#FFFFFF] dark:bg-[#1D1D1D] border border-gray-300 dark:border-none rounded-md px-6 shadow-md">
           grupo
         </button>
-      </div>
+      </div> */}
       {/* OPCIONES DESPLEGADAS */}
-      Opcion: {currentOption}
+      {/* Opcion: {currentOption} */}
       <AddFaltaComp />
     </div>
   );
