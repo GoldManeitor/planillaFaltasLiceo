@@ -6,7 +6,7 @@ import Datepicker from "tailwind-datepicker-react";
 const options = {
   title: "Fecha de faltas",
   autoHide: true,
-  todayBtn: true,
+  todayBtn: false,
   todayBtnText: "Hoy",
   clearBtn: false,
   maxDate: new Date(),
@@ -83,15 +83,12 @@ function AddFaltaComp(props) {
   const { actualizar, setActualizar } = useContext(ODContext);
 
   const [alumnosList, setAlumnosList] = useState([]);
-  const [alumno, setAlumno] = useState("nospecify");
+  const [alumno, setAlumno] = useState(null);
   const [grupos, setGrupos] = useState([]);
   const [subGrupos, setSubGrupos] = useState([]);
   const [grpSelected, setGrpSelected] = useState("nospecify");
   const [subgrSelected, setSubgrSelected] = useState("nospecify");
 
-  const [horas, setHoras] = useState(
-    grpSelected !== "nospecify" ? grpSelected.multip : 1
-  );
   const [date, setDate] = useState("");
 
   useEffect(() => {
@@ -114,10 +111,9 @@ function AddFaltaComp(props) {
         const { data: subGrLiceo, error } = await supabase
           .from("subGrLiceo")
           .select()
-          .eq("grupoID", grpSelected.id);
+          .eq("grupoID", grpSelected);
         if (error) {
           console.error(error);
-          setSubGrupos([]);
         } else {
           setSubGrupos(subGrLiceo);
         }
@@ -132,7 +128,7 @@ function AddFaltaComp(props) {
         const { data: alumnosLiceo, error } = await supabase
           .from("alumnosLiceo")
           .select()
-          .eq("subGrID", subgrSelected.id);
+          .eq("subGrID", subgrSelected);
         if (error) {
           console.error(error);
         } else {
@@ -143,29 +139,14 @@ function AddFaltaComp(props) {
     bringAlumn();
   }, [grpSelected, subgrSelected, actualizar]);
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    const { error } = await supabase.from("faltasAlumnos").insert([
-      {
-        alumno: alumno.id,
-        nom_alumno:
-          alumno.name.slice(0, 1).toUpperCase() +
-          alumno.name.slice(1, alumno.name.length).toLowerCase() +
-          " " +
-          alumno.lastname.slice(0, 1).toUpperCase() +
-          alumno.lastname.slice(1, alumno.lastname.length).toLowerCase(),
-        gr_alumno: alumno.grupoID,
-        subgr_alumno: alumno.subGrID,
-        full_date: date,
-      },
-    ]);
-    if (error) console.error(error);
-    else {
-      console.log("correcto envio");
+  const [horas, setHoras] = useState();
+  useEffect(() => {
+    if (grpSelected !== "nospecify") {
+      setHoras(
+        grupos.find((grupo) => grupo.id === parseInt(grpSelected)).multip
+      );
     }
-
-    setActualizar(!actualizar);
-  };
+  }, [grpSelected]);
 
   const onChangeHandler = (value, input) => {
     if (input === 1) {
@@ -174,7 +155,7 @@ function AddFaltaComp(props) {
     } else {
       setSubgrSelected(value);
     }
-    setAlumno("nospecify");
+    setAlumno(null);
     setAlumnosList([]);
   };
 
@@ -189,11 +170,47 @@ function AddFaltaComp(props) {
 
     setDate(formattedDate);
   };
-
+  useEffect(() => {
+    handleChange(new Date());
+  }, []);
   const handleClose = (state = false) => {
     // Si state no está definido, se establece como false por defecto
     setShow(state);
   };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    console.log(horas);
+    for (let i = 1; i <= horas; i++) {
+      const alumnoSelected = alumnosList.find(
+        (al) => al.id === parseInt(alumno)
+      );
+
+      console.log(alumnoSelected);
+      const nombreCompleto =
+        alumnoSelected.name.slice(0, 1).toUpperCase() +
+        alumnoSelected.name.slice(1).toLowerCase() +
+        " " +
+        alumnoSelected.lastname.slice(0, 1).toUpperCase() +
+        alumnoSelected.lastname.slice(1).toLowerCase();
+      const { error } = await supabase.from("faltasAlumnos").insert([
+        {
+          alumno: alumnoSelected.id,
+          nom_alumno: nombreCompleto,
+          gr_alumno: alumnoSelected.grupoID,
+          subgr_alumno: alumnoSelected.subGrID,
+          full_date: date,
+        },
+      ]);
+      if (error) console.error(error);
+      else {
+        console.log("correcto envio");
+      }
+
+      setActualizar(!actualizar);
+    }
+  };
+
   return (
     <div className="overflow-x-hidden w-full p-2 relative">
       <div>
@@ -225,7 +242,7 @@ function AddFaltaComp(props) {
             <option value={"nospecify"}>No especificado</option>
             {grupos.length > 0
               ? grupos.map((grupo) => (
-                  <option key={grupo.id} value={grupo}>
+                  <option key={grupo.id} value={grupo.id}>
                     {grupo.name.slice(0, 1).toUpperCase() +
                       grupo.name.slice(1, grupo.name.length).toLowerCase()}
                   </option>
@@ -251,7 +268,7 @@ function AddFaltaComp(props) {
             <option value={"nospecify"}>No especificado</option>
             {subGrupos.length > 0
               ? subGrupos.map((subgrupo) => (
-                  <option key={subgrupo.id} value={subgrupo}>
+                  <option key={subgrupo.id} value={subgrupo.id}>
                     {subgrupo.name.slice(0, 1).toUpperCase() +
                       subgrupo.name
                         .slice(1, subgrupo.name.length)
@@ -273,13 +290,13 @@ function AddFaltaComp(props) {
             name="gr_name"
             id="gr_name"
             onChange={(e) => setAlumno(e.target.value)}
-            defaultValue={"nospecify"}
+            defaultValue={null}
             className="bg-[#F2F2F2] border border-gray-400 text-gray-900 text-sm rounded-md focus:ring-[#6200EE] focus:border-[#6200EE] block w-full p-1.5 dark:bg-[#0B0B0B] dark:border-gray-500 dark:placeholder-gray-400 dark:text-gray-200 dark:focus:ring-[#BB86FC] dark:focus:border-[#BB86FC]"
           >
-            <option value={"nospecify"}>No especificado</option>
+            <option value={null}>No especificado</option>
             {alumnosList.length > 0
               ? alumnosList.map((alumno) => (
-                  <option key={alumno.id} value={alumno}>
+                  <option key={alumno.id} value={alumno.id}>
                     {alumno.name.slice(0, 1).toUpperCase() +
                       alumno.name.slice(1, alumno.name.length).toLowerCase() +
                       " " +
@@ -300,7 +317,7 @@ function AddFaltaComp(props) {
             Cantidad de horas
           </label>
           <input
-            placeholder={horas.toString()}
+            placeholder={horas}
             defaultValue={horas}
             type="text"
             name="horas"
@@ -321,7 +338,7 @@ function AddFaltaComp(props) {
       <div className="absolute bottom-12">
         <button
           className={`${
-            alumno === "nospecify"
+            !alumno
               ? // ||
                 // grpSelected === "nospecify" ||
                 // subgrSelected === "nospecify"
@@ -333,7 +350,7 @@ function AddFaltaComp(props) {
           Poner falta
         </button>
         <p className="text-xs text-gray-400 mt-1">
-          {alumno === "nospecify"
+          {!alumno
             ? //   ||
               //   grpSelected === "nospecify" ||
               //   subgrSelected === "nospecify"

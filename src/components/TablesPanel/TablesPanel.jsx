@@ -14,6 +14,8 @@ function TablesPanel() {
     setLeftLarge,
     leftOption,
     setLeftOption,
+    setActualizar,
+    actualizar,
   } = useContext(ODContext);
 
   const [changePanelSize, setChangePanelSize] = useState(false);
@@ -37,7 +39,7 @@ function TablesPanel() {
       </div>
       <div className="h-auto mt-4">
         <hr className="dark:border-[#161616]" />
-        <div className="flex py-2">
+        <div className="flex py-2 items-center">
           <div
             onClick={() => setChangePanelSize(true)}
             className={`${
@@ -86,10 +88,29 @@ function TablesPanel() {
               />
             </svg>
           </div>
+          <div
+            className="w-8 h-8 ml-6 bg-gray-100 dark:bg-[#1d1d1d] border dark:border-[#161616] flex justify-center items-center rounded-full cursor-pointer hover:bg-white dark:hover:bg-[#161616]"
+            onClick={() => setActualizar(!actualizar)}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6 "
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
+              />
+            </svg>
+          </div>
         </div>
         <hr className="dark:border-[#161616]" />
       </div>
-      <div className="rounded-t-md bg-[#F2F2F2] dark:bg-[#0B0B0B] mt-2 overflow-y-scroll col-start-2 border border-gray-200 dark:border-[#161616] flex flex-wrap overflow-y-scroll overflow-x-hidden items-start justify-start content-start">
+      <div className="relative rounded-t-md bg-[#F2F2F2] dark:bg-[#0B0B0B] mt-2 overflow-y-scroll col-start-2 border border-gray-200 dark:border-[#161616] flex flex-wrap overflow-y-scroll overflow-x-hidden items-start justify-start content-start">
         <Tables display={changePanelSize} />
       </div>
     </div>
