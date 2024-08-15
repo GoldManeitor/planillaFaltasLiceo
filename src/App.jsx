@@ -5,6 +5,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import { supabase } from "./supabase/client";
+import WebManagerProvider from "./context/WebManager";
 
 function App() {
   const navigate = useNavigate();
@@ -20,7 +21,14 @@ function App() {
   return (
     <div className="h-[100vh]">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <WebManagerProvider>
+              <Home />
+            </WebManagerProvider>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

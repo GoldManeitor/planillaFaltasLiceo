@@ -309,23 +309,25 @@ function AddFaltaComp(props) {
               : null}
           </select>
         </div>
-        <div className="w-[50px] mt-8">
-          <label
-            htmlFor="small-input"
-            className="block mb-1 text-xs font-medium text-gray-900 dark:text-gray-500"
-          >
-            Cantidad de horas
-          </label>
-          <input
-            placeholder={horas}
-            defaultValue={horas}
-            type="text"
-            name="horas"
-            id="horas"
-            onChange={(e) => setHoras(e.target.value)}
-            className=" bg-custom-bg border border-gray-400 text-gray-900 text-sm rounded-md focus:ring-[#6200EE] focus:border-[#6200EE] block w-full p-1.5 dark:bg-custom-darkbg dark:border-gray-500 dark:placeholder-gray-400 dark:text-gray-200 dark:focus:ring-[#BB86FC] dark:focus:border-[#BB86FC]"
-          />
-        </div>
+        {grpSelected !== "nospecify" ? (
+          <div className="w-[50px] mt-8">
+            <label
+              htmlFor="small-input"
+              className="block mb-1 text-xs font-medium text-gray-900 dark:text-gray-500"
+            >
+              Cantidad de horas
+            </label>
+            <input
+              placeholder={horas}
+              defaultValue={horas}
+              type="text"
+              name="horas"
+              id="horas"
+              onChange={(e) => setHoras(e.target.value)}
+              className=" bg-custom-bg border border-gray-400 text-gray-900 text-sm rounded-md focus:ring-[#6200EE] focus:border-[#6200EE] block w-full p-1.5 dark:bg-custom-darkbg dark:border-gray-500 dark:placeholder-gray-400 dark:text-gray-200 dark:focus:ring-[#BB86FC] dark:focus:border-[#BB86FC]"
+            />
+          </div>
+        ) : null}
       </div>
       <Datepicker
         options={options}
