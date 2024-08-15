@@ -18,8 +18,10 @@ function DeployPanel() {
   };
   return (
     <div
-      className={`p-2 px-8 border-l dark:border-[#161616] h-full grid grid-rows-[auto_1fr] ${
-        largeSize && !leftLarge ? "delay-100 w-full py-8 border-none" : "pt-8"
+      className={`p-2 px-2 border-l dark:border-[#161616] h-full grid grid-rows-[auto_1fr] ${
+        largeSize && !leftLarge
+          ? "delay-100 w-full py-8 border-none"
+          : "pt-8 w-64"
       }`}
     >
       <div className="w-full">

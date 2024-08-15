@@ -41,7 +41,7 @@ function Groups(props) {
       subgroups();
     }
   }, [actualizar, selectedGroup]);
-  
+
   return <div>Hola soy opcion 4</div>;
 }
 

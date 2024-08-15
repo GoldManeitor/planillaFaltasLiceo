@@ -72,7 +72,7 @@ function Tables({ display }) {
             className="w-1/2 box-border h-min p-2"
           >
             <div className="w-full p-2 border border-gray-300 dark:border-[#161616] bg-white dark:bg-[#111111] rounded-lg">
-              <div>
+              <div className="mb-2">
                 <h1 className="text-center uppercase font-bold text-gray-600 dark:text-gray-300">
                   {grupo.name}
                 </h1>

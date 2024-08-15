@@ -172,7 +172,6 @@ function AddAlumno(props) {
       {/*Submit*/}
       <button
         className={`${
-          !name ||
           !lastname ||
           grpSelected === "nospecify" ||
           subgrSelected === "nospecify"
@@ -184,8 +183,7 @@ function AddAlumno(props) {
         Guardar
       </button>
       <p className="text-xs text-gray-400 mt-1">
-        {!name ||
-        !lastname ||
+        {!lastname ||
         grpSelected === "nospecify" ||
         subgrSelected === "nospecify"
           ? "Rellene los campos para guardar"

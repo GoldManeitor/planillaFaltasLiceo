@@ -22,7 +22,7 @@ function TablesPanel() {
   return (
     <div
       className={`h-full z-1 grid grid-rows-[.3fr_auto_10fr] grid-cols-[auto_1fr] pt-8 px-2 ${
-        largeSize && !leftLarge ? "w-0 *:hidden" : "w-[80%]"
+        largeSize && !leftLarge ? "w-0 *:hidden" : "w-[80%] grow"
       }`}
     >
       {/*Seccion desplegable de botones dasheados*/}

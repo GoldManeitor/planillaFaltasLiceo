@@ -8,7 +8,10 @@ import AddFalta from "./AddFalta";
 
 function OptionPanel() {
   const [darkMode, setDarkMode] = useState(false);
-  const [panelWidth, setPanelWidth] = useState({ size: "200px", isOpen: true });
+  const [panelWidth, setPanelWidth] = useState({
+    size: "100px",
+    isOpen: false,
+  });
   const [icon, setIcon] = useState(false);
   const [btnSize, setBtnSize] = useState("100%");
 

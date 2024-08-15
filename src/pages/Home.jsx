@@ -24,7 +24,7 @@ function Home(props) {
       <ODContextProvider className="z-10">
         <div className="w-full h-full grid grid-cols-[auto_1fr] grid-rows-1 gap-4 relative px-6">
           <OptionPanel />
-          <div className="col-start-2 flex gap-4">
+          <div className="w-full col-start-2 flex gap-4 justify-end">
             <TablesPanel />
             <DeployPanel />
           </div>

@@ -20,7 +20,7 @@ const options = {
     disabledText:
       "bg-custom-bg dark:bg-custom-darkbg !text-gray-400 dark:!text-gray-600",
     input:
-      "mt-2 w-1/2 cursor-pointer bg-custom-bg dark:bg-custom-darkbg border-gray-400 text-gray-900 text-sm rounded-md focus:ring-[#6200EE] focus:border-[#6200EE] dark:bg-[#0B0B0B] dark:border-gray-500 dark:placeholder-gray-400 dark:text-gray-200 dark:focus:ring-[#BB86FC] dark:focus:border-[#BB86FC]",
+      "mt-2 w-full cursor-pointer bg-custom-bg dark:bg-custom-darkbg border-gray-400 text-gray-900 text-sm rounded-md focus:ring-[#6200EE] focus:border-[#6200EE] dark:bg-[#0B0B0B] dark:border-gray-500 dark:placeholder-gray-400 dark:text-gray-200 dark:focus:ring-[#BB86FC] dark:focus:border-[#BB86FC]",
     inputIcon: "",
     selected:
       "bg-custom-vi dark:bg-custom-darkvi hover:text-custom-vi hover:bg-custom-bg dark:hover:text-custom-darkvi dark:hover:bg-custom-darkbg",
@@ -212,7 +212,7 @@ function AddFaltaComp(props) {
   };
 
   return (
-    <div className="overflow-x-hidden w-full p-2 relative">
+    <div className="overflow-x-hidden w-full p-2 relative ml-2">
       <div>
         <h1 className="font-bold text-2xl flex gap-1.5">
           <p>Poner</p>{" "}
@@ -334,6 +334,7 @@ function AddFaltaComp(props) {
         onChange={(e) => handleChange(e)}
         show={show}
         setShow={handleClose}
+        className="w-full"
       />
 
       {/*Submit*/}
