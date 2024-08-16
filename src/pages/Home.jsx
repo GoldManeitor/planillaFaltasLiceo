@@ -5,6 +5,8 @@ import ODContextProvider, { ODContext } from "../context/ODContext";
 import OptionPanel from "../components/OptionPanel/OptionPanel";
 import DeployPanel from "../components/DeployPanel/DeployPanel";
 import TablesPanel from "../components/TablesPanel/TablesPanel";
+import CajaDeSugerencias from "../components/CajaDeSugerencias";
+import { WebManager } from "../context/WebManager";
 
 function Home(props) {
   const navigate = useNavigate();
@@ -17,9 +19,19 @@ function Home(props) {
     };
     func();
   }, [navigate]);
+
+  const { openComm, setOpenComm } = useContext(WebManager);
   return (
     <div className="w-full h-full bg-[#FFFFFF] dark:bg-[#111111] dark:text-gray-400 ">
-      <header className="w-full h-[25px] bg-[#6200EE] dark:bg-[#BB86FC] z-50 border-b dark:border-[#161616]"></header>
+      <header className="relative w-full h-[25px] bg-[#6200EE] dark:bg-[#BB86FC] !z-[5000] border-b dark:border-[#161616] flex justify-center items-center">
+        <p
+          className="text-white text-xs underline cursor-pointer dark:text-custom-darkbg"
+          onClick={() => setOpenComm(!openComm)}
+        >
+          Deja tu comentario
+        </p>
+        {openComm ? <CajaDeSugerencias /> : null}
+      </header>
       {/*----------------Paneles-----------------------*/}
       <ODContextProvider className="z-10">
         <div className="w-full h-full grid grid-cols-[auto_1fr] grid-rows-1 gap-4 relative px-6">

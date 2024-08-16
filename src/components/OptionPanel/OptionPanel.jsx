@@ -45,26 +45,29 @@ function OptionPanel() {
         {/*----------------Lisos---------------------*/}
         <FilledBtns icon={icon} btnSize={btnSize} />
         {/*--------------Home Buttons-------------------*/}
-        <div className="flex gap-2 h-full w-full items-end justify-between pb-10">
-          <button
-            onClick={() => supabase.auth.signOut()}
-            className="bg-[#6200EE] dark:bg-[#BB86FC] hover:bg-[#781AFE] dark:hover:bg-[#DBBEFF] text-[#E5E5E5] dark:text-[#111111] min-w-[40px] h-[40px] rounded-full flex justify-center items-center px-2 py-2 gap-2 shadow-xl"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-6"
+        <hr className="my-6 border-gray-300 dark:border-[#161616] w-full" />
+        <div className="flex gap-2 h-auto w-full items-center justify-between pb-10">
+          <div className="min-w-[40px] h-full flex items-end ">
+            <button
+              onClick={() => supabase.auth.signOut()}
+              className="bg-[#6200EE] dark:bg-[#BB86FC] hover:bg-[#781AFE] dark:hover:bg-[#DBBEFF] text-[#E5E5E5] dark:text-[#111111] w-full h-[40px] rounded-full flex justify-center items-center px-2 py-2 gap-2 shadow-xl"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M5.636 5.636a9 9 0 1 0 12.728 0M12 3v9"
-              />
-            </svg>
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="size-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5.636 5.636a9 9 0 1 0 12.728 0M12 3v9"
+                />
+              </svg>
+            </button>
+          </div>
 
           <div className="h-auto flex flex-col gap-2 justify-center items-center">
             <button

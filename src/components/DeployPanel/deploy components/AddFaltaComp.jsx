@@ -162,16 +162,16 @@ function AddFaltaComp(props) {
   const [show, setShow] = useState(false);
 
   const handleChange = (selectedDate) => {
-    const formattedDate = new Intl.DateTimeFormat("es", {
+    const formattedDate = new Intl.DateTimeFormat("en", {
       day: "2-digit",
       month: "2-digit",
       year: "numeric",
     }).format(selectedDate);
-
     setDate(formattedDate);
   };
   useEffect(() => {
-    handleChange(new Date());
+    const fechaHoy = new Date();
+    handleChange(fechaHoy);
   }, []);
   const handleClose = (state = false) => {
     // Si state no está definido, se establece como false por defecto
@@ -180,13 +180,11 @@ function AddFaltaComp(props) {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(horas);
     for (let i = 1; i <= horas; i++) {
       const alumnoSelected = alumnosList.find(
         (al) => al.id === parseInt(alumno)
       );
 
-      console.log(alumnoSelected);
       const nombreCompleto =
         alumnoSelected.name.slice(0, 1).toUpperCase() +
         alumnoSelected.name.slice(1).toLowerCase() +
@@ -338,7 +336,8 @@ function AddFaltaComp(props) {
       />
 
       {/*Submit*/}
-      <div className="absolute bottom-12">
+      <div className="">
+        <hr className="mt-6 border-gray-300 dark:border-[#161616]" />
         <button
           className={`${
             !alumno

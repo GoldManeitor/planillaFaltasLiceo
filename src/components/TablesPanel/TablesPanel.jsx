@@ -21,20 +21,18 @@ function TablesPanel() {
   const [changePanelSize, setChangePanelSize] = useState(false);
   return (
     <div
-      className={`h-full z-1 grid grid-rows-[.3fr_auto_10fr] grid-cols-[auto_1fr] pt-8 px-2 ${
+      className={`h-full z-1 grid grid-rows-[5px_auto_10fr] grid-cols-[auto_1fr] pt-8 px-2 ${
         largeSize && !leftLarge ? "w-0 *:hidden" : "w-[80%] grow"
       }`}
     >
       {/*Seccion desplegable de botones dasheados*/}
       <DashedSection />
 
-      <div className="flex flex-row gap-2 justify-center items-start col-start-2">
-        <button className="bg-[#FFFFFF] dark:bg-[#1D1D1D] border border-gray-300 dark:border-none rounded-md px-6 ">
-          fecha
-        </button>
+      <div className="flex flex-row gap-2 justify-center items-start col-start-2 row-start-1">
+        <button className="h-full w-1/6 bg-[#FFFFFF] dark:bg-[#1D1D1D] border border-gray-300 dark:border-none rounded-md px-6 "></button>
         <input
           type="text"
-          className="w-5/6 h-[25px] bg-[#FFFFFF] dark:bg-[#1D1D1D] border border-gray-300 dark:border-none rounded-md"
+          className="w-5/6 h-full bg-[#FFFFFF] dark:bg-[#1D1D1D] border border-gray-300 dark:border-none rounded-md"
         />
       </div>
       <div className="h-auto mt-4">
@@ -110,7 +108,7 @@ function TablesPanel() {
         </div>
         <hr className="dark:border-[#161616]" />
       </div>
-      <div className="relative rounded-t-md bg-[#F2F2F2] dark:bg-[#0B0B0B] mt-2 overflow-y-scroll col-start-2 border border-gray-200 dark:border-[#161616] flex flex-wrap overflow-y-scroll overflow-x-hidden items-start justify-start content-start">
+      <div className="relative rounded-t-md bg-[#F2F2F2] dark:bg-[#0B0B0B] mt-2 overflow-y-scroll col-start-2 border border-gray-200 dark:border-[#161616] flex flex-wrap overflow-y-scroll overflow-x-hidden items-start justify-start content-start mb-10">
         <Tables display={changePanelSize} />
       </div>
     </div>

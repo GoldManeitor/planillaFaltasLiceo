@@ -90,8 +90,8 @@ function Tables({ display }) {
                       </h1>
                       <hr className="border-gray-300 dark:border-[#161616]" />
                     </div>
-                    <div className="w-full grid grid-cols-[1.5fr_.5fr_.8fr_.7fr_24px] text-gray-500 px-1">
-                      <div className="uppercase text-sm font-semibold overflow-x-auto">
+                    <div className="w-full grid grid-cols-[1.5fr_.5fr_.8fr_.7fr_24px] text-gray-500 px-1 gap-2">
+                      <div className="uppercase text-sm font-semibold overflow-x-auto truncate">
                         nombre alumno
                       </div>
                       <div className="uppercase text-sm font-semibold">
@@ -122,7 +122,7 @@ function Tables({ display }) {
                           className="dark:text-gray-300 bg-gray-100 dark:bg-[#1d1d1d] rounded-md px-2"
                         >
                           <div className="divide-y">
-                            <div className="dark:border-gray-700 grid grid-cols-[1.5fr_.5fr_.8fr_.7fr_24px]">
+                            <div className="dark:border-gray-700 grid grid-cols-[1.5fr_.5fr_.8fr_.7fr_24px] gap-2">
                               <div className="overflow-x-auto truncate">
                                 {alumno.name.slice(0, 1).toUpperCase() +
                                   alumno.name
@@ -137,7 +137,7 @@ function Tables({ display }) {
                               <div className="whitespace-nowrap text-[#6200EE] dark:text-[#BB86FC]">
                                 <FaltasPlugin id={alumno.id} />
                               </div>
-                              <div className="overflow-x-auto">
+                              <div className="overflow-x-auto truncate">
                                 {grupo.name.slice(0, 1).toUpperCase() +
                                   grupo.name
                                     .slice(1, grupo.name.length)
