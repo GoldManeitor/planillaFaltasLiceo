@@ -35,7 +35,7 @@ function CajaDeSugerencias() {
         <div className="w-full h-full relative p-4">
           <p className="mb-4">
             Escribí acá lo que quieras mejorar o falte en el programa, que con
-            gusto no lo leeré:
+            gusto lo leeré:
           </p>
           <textarea
             className="resize-none rounded-md w-full dark:bg-custom-darkbg"
@@ -49,7 +49,11 @@ function CajaDeSugerencias() {
           >
             Enviar comentario
           </button>
-        {appr ? <div className="absolute bg-green-200 opacity-70 w-full h-full rounded-md top-0 left-0 flex items-center justify-center">¡Gracias por tu comentario!</div> : null}
+          {appr ? (
+            <div className="absolute bg-green-200 opacity-70 w-full h-full rounded-md top-0 left-0 flex items-center justify-center">
+              ¡Gracias por tu comentario!
+            </div>
+          ) : null}
         </div>
       </div>
     </>

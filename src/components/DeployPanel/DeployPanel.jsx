@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { ODContext } from "../../context/ODContext";
 import AddFaltaComp from "./deploy components/AddFaltaComp";
 import Groups from "./deploy components/Groups";
+import ShowAlumnoComp from "./deploy components/ShowAlumnoComp";
 
 function DeployPanel() {
   const {
@@ -60,11 +61,9 @@ function DeployPanel() {
       </div> */}
       {/* OPCIONES DESPLEGADAS */}
       {/* Opcion: {currentOption} */}
-      {currentOption === 0 ? (
-        <AddFaltaComp />
-      ) : currentOption === 4 ? (
-        <Groups />
-      ) : null}
+      {currentOption === 0 ? <AddFaltaComp /> : null}
+      {currentOption === 4 ? <Groups /> : null}
+      {currentOption === 10 ? <ShowAlumnoComp /> : null}
     </div>
   );
 }

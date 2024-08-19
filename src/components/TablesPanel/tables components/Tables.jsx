@@ -3,6 +3,7 @@ import { supabase } from "../../../supabase/client";
 import { useContext, useEffect, useState } from "react";
 import FaltasPlugin from "./plugins/FaltasPlugin";
 import { Spinner } from "flowbite-react";
+import { WebManager } from "../../../context/WebManager";
 
 function Tables({ display }) {
   const {
@@ -12,7 +13,12 @@ function Tables({ display }) {
     setLeftOption,
     actualizar,
     setActualizar,
+    largeSize,
+    setLargeSize,
+    currentOption,
+    setCurrentOption,
   } = useContext(ODContext);
+  const { alumnoSelected, setAlumnoSelected } = useContext(WebManager);
   const [alumnos, setAlumnos] = useState([]);
   const [subgrupos, setSubgrupos] = useState([]);
   const [grupos, setGrupos] = useState([]);
@@ -25,7 +31,8 @@ function Tables({ display }) {
     const bringAlumnos = async () => {
       const { data: alumnosLiceo, error } = await supabase
         .from("alumnosLiceo")
-        .select("*");
+        .select("*")
+        .order("lastname", { ascending: true });
       if (error) {
         console.error(error);
       } else {
@@ -58,6 +65,12 @@ function Tables({ display }) {
     };
     bringGrupos();
   }, [actualizar]);
+
+  const onClickAlumnoHandler = (id) => {
+    setAlumnoSelected(id);
+    setLargeSize(true);
+    setCurrentOption(10);
+  };
 
   return (
     <>
@@ -119,20 +132,25 @@ function Tables({ display }) {
                       .map((alumno) => (
                         <div
                           key={alumno.id}
-                          className="dark:text-gray-300 bg-gray-100 dark:bg-[#1d1d1d] rounded-md px-2"
+                          className="dark:text-gray-300 bg-gray-100 dark:bg-[#1d1d1d] rounded-md px-2 cursor-pointer"
+                          onClick={() => onClickAlumnoHandler(alumno.id)}
                         >
                           <div className="divide-y">
                             <div className="dark:border-gray-700 grid grid-cols-[1.5fr_.5fr_.8fr_.7fr_24px] gap-2">
                               <div className="overflow-x-auto truncate">
-                                {alumno.name.slice(0, 1).toUpperCase() +
-                                  alumno.name
-                                    .slice(1, alumno.name.length)
-                                    .toLowerCase() +
-                                  " " +
-                                  alumno.lastname.slice(0, 1).toUpperCase() +
+                                {alumno.lastname.slice(0, 1).toUpperCase() +
                                   alumno.lastname
                                     .slice(1, alumno.lastname.length)
-                                    .toLowerCase()}
+                                    .toLowerCase()
+                                    .trim() +
+                                  (alumno.name
+                                    ? ", " +
+                                      alumno.name.slice(0, 1).toUpperCase() +
+                                      alumno.name
+                                        .slice(1, alumno.name.length)
+                                        .toLowerCase()
+                                        .trim()
+                                    : "")}
                               </div>
                               <div className="whitespace-nowrap text-[#6200EE] dark:text-[#BB86FC]">
                                 <FaltasPlugin id={alumno.id} />

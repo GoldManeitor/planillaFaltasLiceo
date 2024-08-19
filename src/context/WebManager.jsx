@@ -7,8 +7,10 @@ export const WebManager = React.createContext();
 
 export default function WebManagerProvider({ children }) {
   const [openComm, setOpenComm] = useState(false);
+  const [alumnoSelected, setAlumnoSelected] = useState();
+
   return (
-    <WebManager.Provider value={{ openComm, setOpenComm }}>
+    <WebManager.Provider value={{ openComm, setOpenComm, alumnoSelected, setAlumnoSelected }}>
       {children}
     </WebManager.Provider>
   );
