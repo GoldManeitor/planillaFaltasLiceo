@@ -80,7 +80,7 @@ const options = {
 };
 
 function AddFaltaComp(props) {
-  const { actualizar, setActualizar } = useContext(ODContext);
+  const { actualizar, setActualizar, setLargeSize } = useContext(ODContext);
 
   const [alumnosList, setAlumnosList] = useState([]);
   const [alumno, setAlumno] = useState(null);
@@ -203,6 +203,7 @@ function AddFaltaComp(props) {
       if (error) console.error(error);
       else {
         console.log("correcto envio");
+        setLargeSize(false);
       }
 
       setActualizar(!actualizar);

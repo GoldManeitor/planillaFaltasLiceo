@@ -3,6 +3,7 @@ import { supabase } from "../../../supabase/client";
 import { WebManager } from "../../../context/WebManager";
 import { ODContext } from "../../../context/ODContext";
 import { Button, Modal, Spinner } from "flowbite-react";
+import DeleteFalta from "./DeleteFalta";
 
 function ShowAlumnoComp() {
   const [alumno, setAlumno] = useState({});
@@ -43,7 +44,7 @@ function ShowAlumnoComp() {
 
     bringAlumno();
     bringFaltas();
-  }, [alumnoSelected]);
+  }, [alumnoSelected, actualizar]);
 
   const configureName = (name) => {
     return name.slice(0, 1).toUpperCase() + name.slice(1).toLowerCase();
@@ -109,11 +110,14 @@ function ShowAlumnoComp() {
     return `${day}/${month}/${year}`;
   };
 
+  //-------------------------------------------------
+
   return (
     <div className="overflow-x-hidden w-full p-2 relative ml-2">
       {alumno.id === alumnoSelected ? (
         <>
           <div>
+            <h1 className="text-xs text-gray-400">alumno</h1>
             <h1 className="font-bold text-2xl flex gap-1.5">
               {alumno.name ? (
                 <>
@@ -129,14 +133,21 @@ function ShowAlumnoComp() {
           <hr className="mt-6 border-gray-300 dark:border-[#161616]" />
 
           <div>
-            <p>Cantidad de Faltas en 2024: {faltas.length}</p>
+            <p>Faltas en 2024: {faltas.length}</p>
             <p></p>
           </div>
 
-          <div>
+          <div className="flex flex-col gap-1">
             {faltas.length > 0
               ? faltas.map((falta) => (
-                  <div key={falta.id}>{changeDate(falta.full_date)}</div>
+                  <div
+                    key={falta.id}
+                    className="flex h-auto w-auto gap-2 justify-start items-center"
+                  >
+                    {changeDate(falta.full_date)}
+
+                    <DeleteFalta id={falta.id} />
+                  </div>
                 ))
               : "No hay faltas que mostrar"}
           </div>
