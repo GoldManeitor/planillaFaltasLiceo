@@ -133,18 +133,18 @@ function ShowAlumnoComp() {
           <hr className="mt-6 border-gray-300 dark:border-[#161616]" />
 
           <div>
-            <p>Faltas en 2024: {faltas.length}</p>
+            <p>Faltas en 2024: <b>{faltas.length}</b></p>
             <p></p>
           </div>
 
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-1 mt-4">
             {faltas.length > 0
               ? faltas.map((falta) => (
                   <div
                     key={falta.id}
                     className="flex h-auto w-auto gap-2 justify-start items-center"
                   >
-                    {changeDate(falta.full_date)}
+                    <p className="text-xl">{changeDate(falta.full_date)}</p>
 
                     <DeleteFalta id={falta.id} />
                   </div>

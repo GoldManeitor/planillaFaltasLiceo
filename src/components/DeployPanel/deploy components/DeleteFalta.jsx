@@ -28,7 +28,7 @@ function DeleteFalta({ id }) {
     <div>
       {!switchIcons ? (
         <svg
-          className="w-4 h-4 text-gray-800 dark:text-white cursor-pointer"
+          className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -48,7 +48,7 @@ function DeleteFalta({ id }) {
       ) : (
         <div className="flex gap-2">
           <svg
-            className="w-4 h-4 text-gray-800 dark:text-white cursor-pointer"
+            className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -66,7 +66,7 @@ function DeleteFalta({ id }) {
             />
           </svg>
           <svg
-            className="w-4 h-4 text-gray-800 dark:text-white cursor-pointer"
+            className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             width="24"

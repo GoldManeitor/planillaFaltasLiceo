@@ -207,8 +207,6 @@ function AddFaltaComp(props) {
     }
     setLargeSize(false);
     setAlumno("nospecify");
-    setGrpSelected("nospecify");
-    setSubgrSelected("nospecify");
     setActualizar(!actualizar);
   };
 
@@ -295,7 +293,9 @@ function AddFaltaComp(props) {
             className="bg-[#F2F2F2] border border-gray-400 text-gray-900 text-sm rounded-md focus:ring-[#6200EE] focus:border-[#6200EE] block w-full p-1.5 dark:bg-[#0B0B0B] dark:border-gray-500 dark:placeholder-gray-400 dark:text-gray-200 dark:focus:ring-[#BB86FC] dark:focus:border-[#BB86FC]"
           >
             <option value={"nospecify"}>No especificado</option>
-            {alumnosList.length > 0 && grpSelected !== "nospecify" && subgrSelected !== "nospecify"
+            {alumnosList.length > 0 &&
+            grpSelected !== "nospecify" &&
+            subgrSelected !== "nospecify"
               ? alumnosList.map((alumno) => (
                   <option key={alumno.id} value={alumno.id}>
                     {alumno.name.slice(0, 1).toUpperCase() +
