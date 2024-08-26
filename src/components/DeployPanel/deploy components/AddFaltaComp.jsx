@@ -83,7 +83,7 @@ function AddFaltaComp(props) {
   const { actualizar, setActualizar, setLargeSize } = useContext(ODContext);
 
   const [alumnosList, setAlumnosList] = useState([]);
-  const [alumno, setAlumno] = useState(null);
+  const [alumno, setAlumno] = useState("nospecify");
   const [grupos, setGrupos] = useState([]);
   const [subGrupos, setSubGrupos] = useState([]);
   const [grpSelected, setGrpSelected] = useState("nospecify");
@@ -155,7 +155,7 @@ function AddFaltaComp(props) {
     } else {
       setSubgrSelected(value);
     }
-    setAlumno(null);
+    setAlumno("nospecify");
     setAlumnosList([]);
   };
 
@@ -203,11 +203,13 @@ function AddFaltaComp(props) {
       if (error) console.error(error);
       else {
         console.log("correcto envio");
-        setLargeSize(false);
       }
-
-      setActualizar(!actualizar);
     }
+    setLargeSize(false);
+    setAlumno("nospecify");
+    setGrpSelected("nospecify");
+    setSubgrSelected("nospecify");
+    setActualizar(!actualizar);
   };
 
   return (
@@ -235,7 +237,7 @@ function AddFaltaComp(props) {
             name="anioCurso"
             id="anioCurso"
             onChange={(e) => onChangeHandler(e.target.value, 1)}
-            defaultValue={"nospecify"}
+            value={grpSelected}
             className="bg-[#F2F2F2] border border-gray-400 text-gray-900 text-sm rounded-md focus:ring-[#6200EE] focus:border-[#6200EE] block w-full p-1.5 dark:bg-[#0B0B0B] dark:border-gray-500 dark:placeholder-gray-400 dark:text-gray-200 dark:focus:ring-[#BB86FC] dark:focus:border-[#BB86FC]"
           >
             <option value={"nospecify"}>No especificado</option>
@@ -261,11 +263,11 @@ function AddFaltaComp(props) {
             name="anioCurso"
             id="anioCurso"
             onChange={(e) => onChangeHandler(e.target.value, 2)}
-            defaultValue={"nospecify"}
+            value={subgrSelected}
             className="bg-[#F2F2F2] border border-gray-400 text-gray-900 text-sm rounded-md focus:ring-[#6200EE] focus:border-[#6200EE] block w-full p-1.5 dark:bg-[#0B0B0B] dark:border-gray-500 dark:placeholder-gray-400 dark:text-gray-200 dark:focus:ring-[#BB86FC] dark:focus:border-[#BB86FC]"
           >
             <option value={"nospecify"}>No especificado</option>
-            {subGrupos.length > 0
+            {subGrupos.length > 0 && grpSelected !== "nospecify"
               ? subGrupos.map((subgrupo) => (
                   <option key={subgrupo.id} value={subgrupo.id}>
                     {subgrupo.name.slice(0, 1).toUpperCase() +
@@ -289,11 +291,11 @@ function AddFaltaComp(props) {
             name="gr_name"
             id="gr_name"
             onChange={(e) => setAlumno(e.target.value)}
-            defaultValue={null}
+            value={alumno}
             className="bg-[#F2F2F2] border border-gray-400 text-gray-900 text-sm rounded-md focus:ring-[#6200EE] focus:border-[#6200EE] block w-full p-1.5 dark:bg-[#0B0B0B] dark:border-gray-500 dark:placeholder-gray-400 dark:text-gray-200 dark:focus:ring-[#BB86FC] dark:focus:border-[#BB86FC]"
           >
-            <option value={null}>No especificado</option>
-            {alumnosList.length > 0
+            <option value={"nospecify"}>No especificado</option>
+            {alumnosList.length > 0 && grpSelected !== "nospecify" && subgrSelected !== "nospecify"
               ? alumnosList.map((alumno) => (
                   <option key={alumno.id} value={alumno.id}>
                     {alumno.name.slice(0, 1).toUpperCase() +
@@ -341,7 +343,7 @@ function AddFaltaComp(props) {
         <hr className="mt-6 border-gray-300 dark:border-[#161616]" />
         <button
           className={`${
-            !alumno
+            alumno === "nospecify"
               ? // ||
                 // grpSelected === "nospecify" ||
                 // subgrSelected === "nospecify"
@@ -349,11 +351,12 @@ function AddFaltaComp(props) {
               : ""
           } bg-custom-vi dark:bg-custom-darkvi rounded-md px-4 py-2 text-[#F2F2F2] dark:text-[#0B0B0B] mt-8 font-semibold`}
           onClick={submitHandler}
+          disabled={alumno === "nospecify"}
         >
           Poner falta
         </button>
         <p className="text-xs text-gray-400 mt-1">
-          {!alumno
+          {alumno === "nospecify"
             ? //   ||
               //   grpSelected === "nospecify" ||
               //   subgrSelected === "nospecify"
