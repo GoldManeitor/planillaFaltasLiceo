@@ -5,7 +5,7 @@ import FaltasPlugin from "./plugins/FaltasPlugin";
 import { Spinner } from "flowbite-react";
 import { WebManager } from "../../../context/WebManager";
 
-function Tables({ display }) {
+function Tables({ display, searchFilter }) {
   const {
     leftLarge,
     setLeftLarge,
@@ -68,7 +68,7 @@ function Tables({ display }) {
 
   const onClickAlumnoHandler = (id) => {
     setAlumnoSelected(id);
-    setLargeSize(true);
+    // setLargeSize(true);
     setCurrentOption(10);
   };
 
@@ -127,7 +127,18 @@ function Tables({ display }) {
                     {alumnos
                       .filter(
                         (e) =>
-                          e.grupoID === grupo.id && e.subGrID === subgrupo.id
+                          e.grupoID === grupo.id &&
+                          e.subGrID === subgrupo.id &&
+                          (e.lastname
+                            .normalize("NFD")
+                            .replace(/[\u0300-\u036f]/g, "")
+                            .toLowerCase()
+                            .includes(searchFilter.toLowerCase()) ||
+                            e.name
+                              .normalize("NFD")
+                              .replace(/[\u0300-\u036f]/g, "")
+                              .toLowerCase()
+                              .includes(searchFilter.toLowerCase()))
                       )
                       .map((alumno) => (
                         <div

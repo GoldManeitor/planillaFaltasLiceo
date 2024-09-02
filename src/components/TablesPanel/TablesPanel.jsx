@@ -19,21 +19,21 @@ function TablesPanel() {
   } = useContext(ODContext);
 
   const [changePanelSize, setChangePanelSize] = useState(false);
+  const [searchFilter, setSearchFilter] = useState("");
   return (
     <div
-      className={`h-full z-1 grid grid-rows-[5px_auto_10fr] grid-cols-[auto_1fr] pt-8 px-2 ${
+      className={`h-full z-1 grid grid-rows-[25px_auto_10fr] grid-cols-[auto_1fr] pt-8 px-2 ${
         largeSize && !leftLarge ? "w-0 *:hidden" : "w-[80%] grow"
       }`}
     >
       {/*Seccion desplegable de botones dasheados*/}
       <DashedSection />
 
-      <div className="flex flex-row gap-2 justify-center items-start col-start-2 row-start-1">
-        <button className="h-full w-1/6 bg-[#FFFFFF] dark:bg-[#1D1D1D] border border-gray-300 dark:border-none rounded-md px-6 "></button>
-        <input
-          type="text"
-          className="w-5/6 h-full bg-[#FFFFFF] dark:bg-[#1D1D1D] border border-gray-300 dark:border-none rounded-md"
-        />
+      <div className="flex flex-row gap-2 justify-start items-start col-start-2 row-start-1">
+        <h1 className="font-bold text-2xl flex gap-1.5">
+          <p>Lista de</p>{" "}
+          <p className="text-[#6200EE] dark:text-[#BB86FC]">alumnos</p>
+        </h1>
       </div>
       <div className="h-auto mt-4">
         <hr className="dark:border-[#161616]" />
@@ -86,6 +86,32 @@ function TablesPanel() {
               />
             </svg>
           </div>
+
+          <label htmlFor="" className="relative flex">
+            <span className="absolute inset-y-0 left-2 flex items-center pl-2">
+              <svg
+                className="w-5 h-5 text-slate-400 dark:text-slate-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeWidth="2"
+                  d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
+                />
+              </svg>
+            </span>
+            <input
+              placeholder="Buscar alumno..."
+              className="placeholder:text-slate-400 placeholder:italic px-8 w-60 h-8 ml-2 bg-white dark:bg-transparent border dark:border-[#161616] flex justify-center items-center rounded-md cursor-text hover:bg-white dark:hover:bg-[#161616] focus:ring-[#6200EE] focus:border-[#6200EE] dark:placeholder-gray-400 dark:text-gray-200 dark:focus:ring-[#BB86FC] dark:focus:border-[#BB86FC]"
+              onChange={(e) => setSearchFilter(e.target.value)}
+            />
+          </label>
           <div
             className="w-8 h-8 ml-6 bg-gray-100 dark:bg-[#1d1d1d] border dark:border-[#161616] flex justify-center items-center rounded-full cursor-pointer hover:bg-white dark:hover:bg-[#161616]"
             onClick={() => setActualizar(!actualizar)}
@@ -109,7 +135,7 @@ function TablesPanel() {
         <hr className="dark:border-[#161616]" />
       </div>
       <div className="relative rounded-t-md bg-[#F2F2F2] dark:bg-[#0B0B0B] mt-2 overflow-y-scroll col-start-2 border border-gray-200 dark:border-[#161616] flex flex-wrap overflow-y-scroll overflow-x-hidden items-start justify-start content-start mb-10">
-        <Tables display={changePanelSize} />
+        <Tables display={changePanelSize} searchFilter={searchFilter} />
       </div>
     </div>
   );
